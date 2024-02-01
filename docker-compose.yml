@@ -11,12 +11,12 @@ services:
       - OAUTHLIB_RELAX_TOKEN_SCOPE=1 #optional
     volumes:
       - config:/config
-      #- books:/books
-      - /mnt/Raid6/shared-folder/books/calibre_library:/books
+      - books:/books
+      #- /mnt/Raid6/shared-folder/books/calibre_library:/books
     ports:
       - 8083:8083
     restart: always
 
 volumes:
   config:
-  #books:
+  books:

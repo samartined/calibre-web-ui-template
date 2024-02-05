@@ -16,6 +16,17 @@ services:
     ports:
       - 8083:8083
     restart: always
+  autossh:
+    image: jnovack/autossh
+    container_name: autossh
+    restart: always
+    environment:
+      - AUTOSSH_GATETIME=30
+      - AUTOSSH_LOGLEVEL=7
+      - AUTOSSH_LOGFILE=/dev/stdout
+    command: ssh -N 8083:192.168.88.233:8083 35.208.6.217
+    volumes:
+      - ./ssh:/root/.ssh
 
 volumes:
   config:

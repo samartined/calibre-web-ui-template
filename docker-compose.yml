@@ -12,10 +12,11 @@ services:
     volumes:
       - config:/config
       - books:/books
-      #- /mnt/Raid6/shared-folder/books/calibre_library:/books
     ports:
       - 8083:8083
     restart: always
+    networks:
+      - calibre
   autossh:
     image: jnovack/autossh
     container_name: autossh
@@ -27,7 +28,12 @@ services:
     command: ssh -N 8083:192.168.88.233:8083 35.208.6.217
     volumes:
       - ./ssh:/root/.ssh
+    networks:
+      - calibre
 
 volumes:
   config:
   books:
+
+networks:
+  calibre:
